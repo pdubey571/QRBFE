@@ -1,0 +1,49 @@
+<div class="edit-profile">
+    <div class="edit-profile-header">
+        <div class="e-p-left">
+            <button class="btn-cancel" type="button" (click)="goBack()">
+                <img src="./assets/images/cross.svg" alt="">
+            </button>
+            <h4>edit restaurant profile</h4>
+        </div>
+        <div class="e-p-right">
+            <button type="button" (click)="SaveProfile()" class="btn-correct">
+                <img src="./assets/images/tick-black.svg" alt="">
+            </button>
+        </div>
+    </div>
+    <div class="edit-profile-body">
+        <div class="edit-profile-inner">
+            <!-- <div class="edit-cover">
+                <label for="editCover">
+                    <img src="./assets/images/profile-cover.jpg" alt="">
+                    <input type="file" id="editCover" />
+                    <span class="edit-msg">change cover photo</span>
+                </label>
+            </div> -->
+            <div class="edit-profile-details">
+                <div class="p-tabs-header">
+                    <ul class="p-tabs">
+                        <li>
+                            <button class="btn btn-tab" (click)="tabSwitch('general')" [ngClass]="{'active': activeTab == 'general'}">front</button>
+                        </li>
+                        <li>
+                            <button class="btn btn-tab" (click)="tabSwitch('contact')" [ngClass]="{'active': activeTab == 'contact'}">info</button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="p-tab-content">
+                    <div class="tab-detail" [hidden]="activeTab !== 'general'" [ngClass]="{'active': activeTab == 'general'}">
+                        <app-edit-general-details (onStoreUpdate)="onStoreUpdate('general',$event)"></app-edit-general-details>
+                    </div>
+                    <div class="tab-detail" [hidden]="activeTab !== 'contact'" [ngClass]="{'active': activeTab == 'contact'}">
+                        <app-edit-contact-details (onStoreUpdate)="onStoreUpdate('contact',$event)"></app-edit-contact-details>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="loader-container {{showLoader?'show':''}}">
+    <div class="loader"></div>
+</div>

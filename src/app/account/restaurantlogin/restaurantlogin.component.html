@@ -1,0 +1,57 @@
+<div class="t-wrapper">
+    <div class="t-header">
+        <div style="text-align: center;">           
+           <div> <h3>Welcome to qrb</h3>  </div>   
+           <div><span>easy covid tracing and dining</span></div>       
+        </div>
+        
+    </div>
+    <div class="t-body p-t-30 signup-wrap">
+        <div class="signup-content">
+            <div class="f-form">                
+                    <div [formGroup]="login_form">
+                        <div class="f-row">
+                            <div class="f-100">
+                                <div class="f-wrap">
+                                    <div class="otp-phone form-group">
+                                        <input maxlength="75" inputmode="search" type="text" class="f-field form-control" placeholder="enter mobile no. or email" formControlName="emailPhone"> 
+                                        <span class="text-danger" *ngIf="login_form.controls['emailPhone'].hasError('required') && (login_form.controls['emailPhone'].dirty || login_form.controls['emailPhone'].touched)">This field is required</span>
+			                            <span class="text-danger" *ngIf="login_form.controls['emailPhone'].hasError('pattern') && (login_form.controls['emailPhone'].dirty || login_form.controls['emailPhone'].touched)">Please enter valid email address or phone number</span>                                                                           
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sp-row form-group">
+                        <div class="sp-col col100">                            
+                            <button type="submit" class="btn btn-solid btn-dark"
+                                (click)="submitForm()" [disabled]="!login_form.valid">continue</button>
+                        </div>
+                    </div>
+                
+            </div>
+            <ul class="social-login-btns">
+                <li><hr></li>
+                <li id="line">or continue with</li>               
+                <li>
+                    <div class="google-btn" (click)="loginWithGoogle()">
+                        <div class="google-icon-wrapper" >
+                          <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
+                        </div>
+                        <p class="btn-text"><span>Sign in with google</span></p>
+                    </div>
+                </li>
+                <li>
+                    <div class="facebook-btn">
+                        <div class="facebook-icon-wrapper">
+                          <img class="facebook-icon" src="./assets/images/socialfacebook.svg"/>
+                        </div>
+                        <div style="text-align: center;">
+                        <p class="btn-text"><span>Continue with Facebook</span></p>
+                        </div>
+                      </div>
+                </li>                
+            </ul>
+        </div>
+    </div>
+</div>

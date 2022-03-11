@@ -1,0 +1,17 @@
+<div class="blank"></div>
+<div class="splash-step">
+    <div class="splash-inner">
+        <div class="splash-group">
+            <label class="splash-label"><span class="step-count">3.</span>established since</label>
+            <div [formGroup]="step3">
+            <div class="splash-field m-t-1 form-group">
+                <input type="text" inputmode="numeric" (keypress)="keyPressNumbers($event)" maxlength="4" minlength="4" class="form-field bg-light-grey" placeholder="year" formControlName="year"/>
+                <span class="text-danger" *ngIf="step3.controls['year'].hasError('required') && (step3.controls['year'].dirty || step3.controls['year'].touched)">This field is required</span>
+            </div>
+            <div class="splash-btn-wrap m-t-3 form-group">
+                <button (click)="submitForm()" [disabled]="!step3.valid"  type="button" class="btn btn-solid btn-dark">next</button>                
+            </div>
+        </div>
+        </div>
+    </div>
+</div>

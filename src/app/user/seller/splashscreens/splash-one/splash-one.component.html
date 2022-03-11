@@ -1,0 +1,22 @@
+<div class="blank"></div>
+<div class="splash-step">
+    <div class="splash-inner">
+        <div class="splash-group">            
+            <label class="splash-label"><span class="step-count">1.</span>business name</label>  
+                <div [formGroup]="step1">
+                    <div class="splash-field m-t-1">
+                        <div class="form-group">
+                            <input type="text" inputmode="email" class="f-field form-control" placeholder="name" formControlName="businessName" />
+                            <span class="text-danger" *ngIf="step1.controls['businessName'].hasError('required') && (step1.controls['businessName'].dirty || step1.controls['businessName'].touched)">This field is required</span>
+                        </div>
+                    </div>
+                    <div class="splash-btn-wrap m-t-3">
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-solid btn-dark"
+                            [disabled]="!step1.valid"    (click)="submitForm()">next</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>

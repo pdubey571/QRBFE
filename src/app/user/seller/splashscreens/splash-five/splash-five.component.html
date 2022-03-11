@@ -1,0 +1,32 @@
+<div class="text-align"><a [routerLink]="[ '/user/seller/congratulations' ]" >skip</a></div>
+<div class="splash-step">
+    <div class="splash-inner">
+        <form [formGroup]="form" (ngSubmit)="submitForm()">
+            <div class="splash-group">
+                <label class="splash-label"><span class="step-count">5.</span>Wecome screen</label>
+                <div class="form-group">
+                    <div style="text-align: center;">
+                        <img [src]="url" *ngIf="format==='image' && url" height="200"> <br/>
+                        <video [src]="url" *ngIf="format==='video' && url" height="200" controls></video> <br/>
+                    </div>
+                    
+                    <div class="upload-field m-t-1 form-group">
+                        <label class="upload-option" for="file">
+                            <input type="file" id="file" (change)="onSelectFile($event)" formControlName="file">
+                            <img src="./assets/images/plus-outlined.svg" alt="">
+                        </label>
+                        <div *ngIf="f.file.touched && f.file.invalid" class="alert alert-danger">
+                            <div *ngIf="f.file.errors && f.file.errors.required">File is required.</div>
+                        </div>
+                    </div>                    
+                </div>
+                <div class="splash-btn-wrap m-t-3">                
+                    <button type="submit" class="btn btn-solid btn-dark">next</button>
+                </div>
+            </div>
+            <div class="splash-msg">
+                <p class="info-msg">The photos you upload here will be shown on your restaurant profile. You can add photos of the food or the ambience. videos can be 5-10 seconds</p>
+            </div>
+        </form>
+    </div>
+</div>

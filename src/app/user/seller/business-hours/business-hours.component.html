@@ -1,0 +1,182 @@
+<div class="edit-profile">
+    <div class="edit-profile-header">
+        <div class="e-p-left">
+            <button class="btn-cancel" type="button" (click)="goBack()">
+                <img src="./assets/images/cross.svg" alt="">
+            </button>
+            <h4>business hours</h4>
+        </div>
+        <div class="e-p-right">
+            <button type="button" (click)="addSet()" class="btn-set">
+                <img src="./assets/images/plus-outlined.svg" alt="">
+                <span>add set</span>
+            </button>
+            <button type="button" (click)="saveSet()" class="btn-correct">
+                <img src="./assets/images/tick-black.svg" alt="">
+            </button>
+        </div>
+    </div>
+    <div class="edit-profile-body">
+        <div class="edit-profile-inner">
+            
+            <div class="business-sets">
+                <div *ngFor="let set of sets;let ind=index" class="business-set">
+                    <div class="business-set-header">
+                        <div class="business-set-header-col">
+                            <h4 class="set-heading">{{set.set}}</h4>
+                        </div>
+                        <div class="business-set-header-col">
+                            <button type="button" (click)="removeSet(ind)" class="btn btn-trash">
+                                <img src="./assets/images/btn-bin.svg" alt="">
+                            </button>
+                        </div>
+                    </div>
+                    <div class="business-set-body">
+                        <div class="set-days">
+                            <div *ngFor="let day of set.days" class="set-day">
+                                <label for="{{day.day+ind}}" class="set-day-btn">
+                                    <input type="checkbox" name="{{day.day+ind}}" id="{{day.day+ind}}" [(ngModel)]="day.value" [value]="day.value">
+                                    <span>{{day.day.charAt(0)}}</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="set-timings">
+                            <div *ngFor="let timing of set.timings" class="set-time">
+                                <div class="opening-time">
+                                    <label class="t-label">opening :</label>
+                                    <div class="s-select">
+                                        <ng-select [(ngModel)]="timing.opening" [searchable]="false" [clearable]="false" [items]="timings"></ng-select>
+                                    </div>
+                                </div>
+                                <div class="d-separator">-</div>
+                                <div class="closing-time">
+                                    <label class="t-label">closing :</label>
+                                    <div class="s-select">
+                                        <ng-select [(ngModel)]="timing.closing"  [searchable]="false" [clearable]="false" [items]="timings"></ng-select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="addhours">
+                                <button type="button" (click)="addHours(set)" class="btn-add-hours">
+                                    <span>+ add hours</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div  class="business-hours-preview">
+                        <div class="timings" >
+                            <p>
+                                <span *ngFor="let x of set.days;">
+                                    <span class="c-days" *ngIf="x.value">
+                                        {{x.day}}
+                                    </span>
+                                </span>
+                                <span *ngIf="set.timings.length">|</span>
+                                <span *ngFor="let x of set.timings; let idx=index">
+                                    {{x.opening.label}} - {{x.closing.label}}
+                                    <span *ngIf="idx>0 && idx<set.timings.length">,</span>
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="business-set">
+                    <div class="business-set-header">
+                        <div class="business-set-header-col">
+                            <h4 class="set-heading">set 2</h4>
+                        </div>
+                        <div class="business-set-header-col">
+                            <button class="btn btn-trash">
+                                <img src="./assets/images/btn-bin.svg" alt="">
+                            </button>
+                        </div>
+                    </div>
+                    <div class="business-set-body">
+                        <div class="set-days">
+                            <div class="set-day">
+                                <label for="monday01" class="set-day-btn">
+                                    <input type="checkbox" name="monday" id="monday01" value="monday">
+                                    <span>M</span>
+                                </label>
+                            </div>
+                            <div class="set-day">
+                                <label for="tuesday01" class="set-day-btn">
+                                    <input type="checkbox" name="tuesday" id="tuesday01" value="tuesday">
+                                    <span>T</span>
+                                </label>
+                            </div>
+                            <div class="set-day">
+                                <label for="wednesday01" class="set-day-btn">
+                                    <input type="checkbox" name="wednesday" id="wednesday01" value="wednesday">
+                                    <span>W</span>
+                                </label>
+                            </div>
+                            <div class="set-day">
+                                <label for="thursday01" class="set-day-btn">
+                                    <input type="checkbox" name="thursday" id="thursday01" value="thursday">
+                                    <span>T</span>
+                                </label>
+                            </div>
+                            <div class="set-day">
+                                <label for="friday01" class="set-day-btn">
+                                    <input type="checkbox" name="friday" id="friday01" value="friday">
+                                    <span>F</span>
+                                </label>
+                            </div>
+                            <div class="set-day">
+                                <label for="saturday01" class="set-day-btn">
+                                    <input type="checkbox" name="saturday" id="saturday01" value="saturday">
+                                    <span>S</span>
+                                </label>
+                            </div>
+                            <div class="set-day">
+                                <label for="sunday01" class="set-day-btn">
+                                    <input type="checkbox" name="sunday" id="sunday01" value="sunday">
+                                    <span>S</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="set-timings">
+                            <div class="set-time">
+                                <div class="opening-time">
+                                    <label class="t-label">opening :</label>
+                                    <div class="s-select">
+                                        <ng-select [searchable]="false" [clearable]="false" [items]="timings"></ng-select>
+                                    </div>
+                                </div>
+                                <div class="d-separator">-</div>
+                                <div class="closing-time">
+                                    <label class="t-label">closing :</label>
+                                    <div class="s-select">
+                                        <ng-select [searchable]="false" [clearable]="false" [items]="timings"></ng-select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="set-time">
+                                <div class="opening-time">
+                                    <label class="t-label">opening :</label>
+                                    <div class="s-select">
+                                        <ng-select [searchable]="false" [clearable]="false" [items]="timings"></ng-select>
+                                    </div>
+                                </div>
+                                <div class="d-separator">-</div>
+                                <div class="closing-time">
+                                    <label class="t-label">closing :</label>
+                                    <div class="s-select">
+                                        <ng-select [searchable]="false" [clearable]="false" [items]="timings"></ng-select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="addhours">
+                                <button class="btn-add-hours">
+                                    <span>+ add hours</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+            
+        </div>
+    </div>
+</div>

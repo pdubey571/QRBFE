@@ -1,0 +1,65 @@
+<form  [formGroup]="form"  novalidate>
+    <div class="f-row">
+        <div class="f-wrap">
+            <input type="text" class="f-field form-control" value="" (input)="onInput($event)" formControlName="phone_number" placeholder="phone">
+        </div>
+    </div>
+    <div class="f-row">
+        <div class="f-wrap">
+            <input type="text" class="f-field form-control" value="" (input)="onInput($event)" formControlName="email" placeholder="email">
+        </div>
+    </div>
+    <div class="f-row">
+        <div class="f-wrap">
+            <input type="text" class="f-field form-control" value="" (input)="onInput($event)" formControlName="website" placeholder="website">
+        </div>
+    </div>
+    <div class="f-row">
+        <div class="f-wrap">
+            <input type="text" class="f-field form-control" value="" (input)="onInput($event)" formControlName="business_address" placeholder="address">
+        </div>
+    </div>
+    <div class="f-row">
+        <div class="f-wrap">
+            <input type="text" class="f-field form-control" value="" (input)="onInput($event)" formControlName="business_shortdescription" placeholder="short description">
+        </div>
+    </div>
+    <div class="business-hours m-t-3">
+        <div class="business-hours-left">
+            <h6><img src="./assets/images/clock.svg" alt=""><span>business hours</span></h6>
+        </div>
+        <div class="business-hours-right">
+            <a [routerLink]="[ '/user/seller/profile/business-hours' ]">
+                <img src="./assets/images/hour-edit.svg" alt="">
+            </a>
+        </div>
+    </div>
+    <!-- <h4 class="form-heading m-t-3 m-b-05">social media links</h4>
+    
+    <div class="social-media-links">
+        <div class="social-media-wrap">
+            <span class="social-link-icon">
+                <img src="./assets/images/insta.svg" alt="">
+            </span>
+          
+        </div>
+        <div class="social-media-wrap">
+            <span class="social-link-icon">
+                <img src="./assets/images/fb.svg" alt="">
+            </span>
+           
+        </div>
+        <div class="social-media-wrap">
+            <span class="social-link-icon">
+                <img src="./assets/images/youtube.svg" alt="">
+            </span>
+          
+        </div>
+        <div class="social-media-wrap">
+            <span class="social-link-icon">
+                <img src="./assets/images/yelp.svg" alt="">
+            </span>
+          
+        </div>
+    </div> -->
+</form>

@@ -1,0 +1,23 @@
+<div class="text-align">    
+    <a [routerLink]="['#']" (click)="submitForm()">skip</a>
+</div>
+<div class="splash-step">
+    <div class="splash-inner">
+        <div class="splash-group">
+            <label class="splash-label"><span class="step-count">4.</span>short description</label>
+            <div [formGroup]="step4">
+                <div class="splash-field m-t-1 form-group">
+                    <input type="text" inputmode="email" maxlength="150" class="form-field bg-light-grey" placeholder="eg., local’s favorite brunch" formControlName="shortDesc" />
+                    <span class="text-danger" *ngIf="step4.controls['shortDesc'].hasError('required') && (step4.controls['shortDesc'].dirty || step4.controls['shortDesc'].touched)">This field is required</span>
+                </div>
+                <div class="splash-btn-wrap m-t-3 form-group">
+                    <button type="submit" class="btn btn-solid btn-dark"
+                        [disabled]="!step4.valid" (click)="submitForm()">next</button>
+                </div>
+            </div>
+        </div>
+        <div class="splash-msg">
+            <p class="info-msg">Provide a short description about your business - what do you do? What are you known for?</p>
+        </div>
+    </div>
+</div>
